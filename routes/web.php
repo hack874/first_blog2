@@ -14,4 +14,8 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get("/posts",[PostController::class, "index"]);
+Route::get('/',[PostController::class, "index"]); //"/検索したら"どのコントローラーのどの処理なのか
+//postcontrollerの"index"
+Route::get('/hello', function () {
+    echo "こんにちは！";
+});
