@@ -13,4 +13,10 @@ class PostController extends Controller
         //$post = Post::get(); //modelのにある"post"を持ってきて、$postに入れる。そしてviewに渡す。 なにも宣言されてないただの$post
         return view('posts/index')->with(['posts' => $post->getPaginateByLimit(1)]);  //viewにお願いしている
     } //view('posts/index')=viewのPost.indexというファイルを指定してる
+    
+    public function show(Post $post)
+    {
+        return view('posts/show')->with(['post'=> $post]);
+    }
 }
+
