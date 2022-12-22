@@ -9,11 +9,11 @@
     </head>
     <body class="antialiased">
         <h1>Blog Name</h1>
-      <form action="/posts" method="POST">
+      <form action="/posts" method="POST"> //sumbitボタンを押したらこのurlに飛ぶ POST=DBにデータを送る
           @csrf
           <div class="title">
               <h2>Title</h2>
-              <input type="text" name=post[title] placeholder="タイトル">
+              <input type="text" name=post[title] placeholder="タイトル"> //DBのpostテーブルのtitleカラムに送る
             </div>
             <div class="body">
               <h2>Body</h2>
