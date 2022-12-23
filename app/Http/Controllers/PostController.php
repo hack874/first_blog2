@@ -23,4 +23,11 @@ class PostController extends Controller
     {
         return view('posts/create');
     }
+    
+    public function store(Request $request, Post $post) //空のpostモデルのインスタンス、入力データの受け取り用にrequestモデルのインスタンス
+    {
+        $input = $request['post']; //?
+        $post->fill($input)->save(); //DBにデータを挿入
+        return redirect('/posts/'. $post->id);
+    }
 }
