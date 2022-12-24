@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -24,7 +25,7 @@ class PostController extends Controller
         return view('posts/create');
     }
     
-    public function store(Request $request, Post $post) //空のpostモデルのインスタンス、入力データの受け取り用にrequestモデルのインスタンス
+    public function store(PostRequest $request, Post $post) //空のpostモデルのインスタンス、入力データの受け取り用にrequestモデルのインスタンス
     {
         $input = $request['post']; //?
         $post->fill($input)->save(); //DBにデータを挿入
