@@ -19,6 +19,8 @@ Route::get('/',[PostController::class, "index"]); //"/検索したら"どのコ�
 Route::get('/posts/create', [PostController::class,'create']); // 左が発動条件,postcontollerのcreateという関数をいく
 Route::get('/posts/{post}', [PostController::class, 'show']);
 Route::post('/posts',[PostController::class, 'store']);
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+Route::put('posts/{post}', [PostController::class, 'update']);
 //Route::get('/hello', function () {
    // echo "こんにちは！";
 //});
