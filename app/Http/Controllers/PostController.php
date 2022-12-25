@@ -12,7 +12,7 @@ class PostController extends Controller
     public function index(Post $post)//$postというテーブル。データはまだ //関数を定義している //$postはpost.phpのpostmodelのデータ。postmodelと紐づいてる$postですという宣言
     {                     //Postモデル型$post
         //$post = Post::get(); //modelのにある"post"を持ってきて、$postに入れる。そしてviewに渡す。 なにも宣言されてないただの$post
-        return view('posts/index')->with(['posts' => $post->getPaginateByLimit(1)]);  //viewにお願いしている
+        return view('posts/index')->with(['posts' => $post->getPaginateByLimit(5)]);  //viewにお願いしている
     } //view('posts/index')=viewのPost.indexというファイルを指定してる
     
     public function show(Post $post) 
@@ -30,5 +30,17 @@ class PostController extends Controller
         $input = $request['post']; //?
         $post->fill($input)->save(); //DBにデータを挿入
         return redirect('/posts/'. $post->id);
+    }
+    
+    public function edit(Post $post)
+    {
+        return view ('posts/edit')->with(['post'=>$post]);
+    }
+    
+    public function update(PostRequest $request, Post $post)
+    {
+        $input_post = $request['post'];
+        $post->fill($input_post)->save();
+        return redirect('/posts/' . $post->id); //aa
     }
 }
